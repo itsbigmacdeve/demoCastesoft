@@ -19,6 +19,13 @@ namespace Infrastructure.Data
             _context = context;
             _mapper = mapper;
         }
+
+        public void DeleteProduct(Products product)
+        {
+            _context.Products.Remove(product);
+        
+        }
+
         public Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
         {
             throw new NotImplementedException();
@@ -37,6 +44,11 @@ namespace Infrastructure.Data
         public async Task<IReadOnlyList<Products>> GetProductsAsync()
         {
             return await _context.Products.ToListAsync();
+        }
+
+        public Task<Products> UpdateProductAsync(Products product)
+        {
+            throw new NotImplementedException();
         }
     }
 }

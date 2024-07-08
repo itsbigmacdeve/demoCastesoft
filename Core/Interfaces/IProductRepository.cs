@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Core.Entities;
+
 
 namespace Core.Interfaces
 {
@@ -11,6 +8,10 @@ namespace Core.Interfaces
         Task<Products>GetProductByIdAsync(int id);
 
         Task<IReadOnlyList<Products>>GetProductsAsync();
+
+        void DeleteProduct(Products product);
+
+        Task<Products>UpdateProductAsync(Products product);
 
         Task<IReadOnlyList<ProductBrand>>GetProductBrandsAsync();
 
