@@ -1,3 +1,4 @@
+using API.Dtos;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -5,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseApiController
     {
 
         private readonly IUnitOfWork _uow;
@@ -19,17 +20,22 @@ namespace API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<List<Products>>> GetProducts()
+        public async Task<ActionResult<List<ProductsDto>>> GetProducts()
         {
-            var products = await _uow.ProductRepository.GetProductsAsync();
-            return Ok(products);
+            var products = await _uow._productRepository.GetProductsAsync();
+
+            var productsDto = _mapper.Map<IReadOnlyList<Products>, IReadOnlyList<ProductsDto>>(products);
+            return Ok(productsDto);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Products>> GetProduct(int id)
+        public async Task<ActionResult<ProductsDto>> GetProduct(int id)
         {
-            var product = await _uow.ProductRepository.GetProductByIdAsync(id);
-            return Ok(product);
+            var product = await _uow._productRepository.GetProductByIdAsync(id);
+
+            var productDto = _mapper.Map<Products, ProductsDto>(product);
+            
+            return Ok(productDto);
         }
     }
 }

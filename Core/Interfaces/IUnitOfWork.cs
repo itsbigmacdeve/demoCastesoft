@@ -8,7 +8,7 @@ namespace Core.Interfaces
 {
     public interface IUnitOfWork
     {
-        IProductRepository ProductRepository { get; }
+        IProductRepository _productRepository { get; }
 
 
         Task<bool> Complete();  

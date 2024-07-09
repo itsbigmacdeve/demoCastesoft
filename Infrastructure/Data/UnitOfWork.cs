@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Core.Interfaces;
 
@@ -19,8 +15,9 @@ namespace Infrastructure.Data
             _mapper = mapper;
         }
         
-        public IProductRepository ProductRepository => new ProductRepository(_context, _mapper);
-        
+
+        public IProductRepository _productRepository => new ProductRepository(_context, _mapper);
+
         public async Task<bool> Complete()
         {
             return await _context.SaveChangesAsync() > 0;

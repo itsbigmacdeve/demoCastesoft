@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -33,7 +29,7 @@ namespace Infrastructure.Data
 
         public async Task<Products> GetProductByIdAsync(int id)
         {
-            return await _context.Products.FindAsync(id);
+            return await _context.Products.Include(p => p.Category).Include(p => p.Brand).Include(p => p.Photos).FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public Task<IReadOnlyList<ProductCategory>> GetProductCategoriesAsync()
@@ -43,7 +39,7 @@ namespace Infrastructure.Data
 
         public async Task<IReadOnlyList<Products>> GetProductsAsync()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products.Include(p => p.Category).Include(p => p.Brand).Include(p=> p.Photos).ToListAsync();
         }
 
         public Task<Products> UpdateProductAsync(Products product)

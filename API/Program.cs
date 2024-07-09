@@ -32,6 +32,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
+app.MapControllers();
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
@@ -54,7 +56,7 @@ catch (Exception ex)
 }
 
 
-app.MapControllers();
+
 
 app.Run();
 

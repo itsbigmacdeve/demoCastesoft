@@ -23,7 +23,7 @@ namespace Infrastructure.Data.Config
             // Se puede leer como un producto tiene muchas fotos y una foto pertenece a un producto                                                    
             builder.HasOne(p => p.Category).WithMany().HasForeignKey(p => p.ProductCategoryId);
             builder.HasOne(p => p.Brand).WithMany().HasForeignKey(p => p.ProductBrandId);
-            builder.HasMany(p => p.Photos).WithOne().HasForeignKey(p => p.ProductId);
+            builder.HasMany(p => p.Photos).WithOne().HasForeignKey(p => p.ProductPhotoId);
             
 
         }

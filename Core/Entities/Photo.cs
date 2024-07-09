@@ -7,6 +7,6 @@ namespace Core.Entities
         public bool IsMain { get; set; }
     
         // Se agrega para poder relacionar la foto con el producto
-        public int ProductId { get; set; }
+        public int ProductPhotoId { get; set; }
     }
 }
