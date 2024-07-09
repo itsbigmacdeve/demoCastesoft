@@ -2,7 +2,7 @@ using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Core.Dtos;
+using Core.CoreDtos;
 
 namespace Infrastructure.Data
 {
@@ -48,15 +48,19 @@ namespace Infrastructure.Data
             throw new NotImplementedException();
         }
 
-        public async Task<Products> CreateProductAsync(CreateProductDto productDto)
+        public async Task<ProductsDto> CreateProductAsync(CreateProductDto createProductDto)
         {
-            var product = _mapper.Map<CreateProductDto, Products>(productDto);
+            var product = _mapper.Map<CreateProductDto, Products>(createProductDto);
 
             _context.Products.Add(product);
 
             await _context.SaveChangesAsync();
 
-            return product;
+            // transform to ProductsDto
+
+            var productDto = _mapper.Map<Products, ProductsDto>(product);
+
+            return productDto;
         }
     }
 }

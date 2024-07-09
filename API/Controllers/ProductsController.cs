@@ -1,5 +1,5 @@
-using API.Dtos;
 using AutoMapper;
+using Core.CoreDtos;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -48,6 +48,17 @@ namespace API.Controllers
             if(await _uow.Complete()) return Ok();
             
             return BadRequest("Problem deleting the product");
+        }
+
+
+         [HttpPost]
+        public async Task<ActionResult<ProductsDto>> CreateProduct(CreateProductDto createProductDto)
+        {
+            var productDto = await _uow._productRepository.CreateProductAsync(createProductDto);
+
+            if (productDto == null) return BadRequest("Problem creating product");
+
+            return Ok(productDto);
         }
 
         

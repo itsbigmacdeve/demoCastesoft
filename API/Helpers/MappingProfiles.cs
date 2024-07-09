@@ -6,11 +6,26 @@ namespace API.Helpers
     {
         public MappingProfiles()
         {
-            //Esto se lee de la brand de ProductDto , se le mapea el brand de la entidad Products
-            CreateMap<Core.Entities.Products, Dtos.ProductsDto>().ForMember
-            (d => d.Category, o => o.MapFrom(s => s.Category.Name))
-                .ForMember(d => d.Brand, o => o.MapFrom(s => s.Brand.Name))
-                .ForMember(d => d.PictureUrl, o => o.MapFrom(o => o.Photos.FirstOrDefault(x => x.IsMain).Url));
+            // Mapeo de Products a ProductsDto
+            CreateMap<Core.Entities.Products, Core.CoreDtos.ProductsDto>()
+                .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name))
+                .ForMember(dest => dest.Brand, opt => opt.MapFrom(src => src.Brand.Name))
+                .ForMember(dest => dest.PictureUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url));
+            
+            // Mapeo de CreateProductDto a Products (Falta analizar esto)
+            CreateMap<Core.CoreDtos.CreateProductDto, Core.Entities.Products>()
+                .ForMember(dest => dest.ProductCategoryId, opt => opt.MapFrom(src => src.ProductCategoryId))
+                .ForMember(dest => dest.ProductBrandId, opt => opt.MapFrom(src => src.ProductBrandId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
+                .ForMember(dest => dest.Discount, opt => opt.MapFrom(src => src.Discount))
+                .ForMember(dest => dest.Photos, opt => opt.MapFrom(src => src.Photos));
+            
+            // Mapeo de CreateProductPhotoDto a Photo (Falta analizar esto)
+            CreateMap<Core.CoreDtos.CreateProductPhotoDto, Core.Entities.Photo>()
+                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                .ForMember(dest => dest.IsMain, opt => opt.MapFrom(src => src.IsMain));
         }
     }
 }

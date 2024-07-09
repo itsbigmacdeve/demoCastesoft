@@ -1,5 +1,5 @@
 
-using Core.Dtos;
+using Core.CoreDtos;
 using Core.Entities;
 
 
@@ -20,7 +20,7 @@ namespace Core.Interfaces
 
         Task<IReadOnlyList<ProductCategory>>GetProductCategoriesAsync();
 
-        Task<Products>CreateProductAsync(CreateProductDto productDto);
+        Task<ProductsDto>CreateProductAsync(CreateProductDto createProductDto);
 
     }
 }

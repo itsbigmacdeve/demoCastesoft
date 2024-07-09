@@ -1,4 +1,4 @@
-namespace Core.Dtos
+namespace Core.CoreDtos
 {
     public class CreateProductDto
     {
@@ -6,8 +6,8 @@ namespace Core.Dtos
         public string Description { get; set; }
         public string Price { get; set; }
         public string Discount { get; set; }
-        public int CategoryId  { get; set; }
-        public int BrandId { get; set; }
+        public int ProductCategoryId  { get; set; }
+        public int ProductBrandId { get; set; }
         public List<CreateProductPhotoDto> Photos { get; set; }
     }
 }

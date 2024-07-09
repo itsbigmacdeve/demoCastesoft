@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Core.Dtos
+namespace Core.CoreDtos
 {
     public class CreateProductPhotoDto
     {
-        string Url { get; set; }
+        public string Url { get; set; }
 
-        bool IsMain { get; set; }
+        public bool IsMain { get; set; }
     }
 }

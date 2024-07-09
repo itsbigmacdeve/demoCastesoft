@@ -25,3 +25,9 @@
 
 - Para agregar una migracion 
 `dotnet ef migrations add InitialCreate -p Infrastructure -s API -o Data/Migrations`
+
+# Para Crear un producto
+
+1. Creamos 2 DTOs en Core
+2. Creamos los perfiles de mapeo
+3. Establecimos que iba a regresar cada uno en el repository y en la implementación
