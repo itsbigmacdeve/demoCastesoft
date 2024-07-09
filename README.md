@@ -39,3 +39,7 @@
 4. Establecimos que iba a regresar cada uno en el repository y en la implementación
 - En el controlador solo se manda a llamar el metodo dentro
 
+# Por hacer mañana 
+- [] Crear metodo de edicion de producto
+- [] Checar que cuando se cree un producto no tenga el mismo nombre
+- [] 

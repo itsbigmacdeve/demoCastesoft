@@ -23,9 +23,9 @@ namespace Infrastructure.Data
         
         }
 
-        public Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
+        public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
         {
-            throw new NotImplementedException();
+            return await _context.ProductBrands.ToListAsync();
         }
 
         public async Task<Products> GetProductByIdAsync(int id)
@@ -34,9 +34,9 @@ namespace Infrastructure.Data
         }
 
 
-        public Task<IReadOnlyList<ProductCategory>> GetProductCategoriesAsync()
+        public async Task<IReadOnlyList<ProductCategory>> GetProductCategoriesAsync()
         {
-            throw new NotImplementedException();
+            return await _context.ProductCategories.ToListAsync();
         }
 
         public async Task<IReadOnlyList<Products>> GetProductsAsync()
