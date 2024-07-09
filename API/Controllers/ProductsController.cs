@@ -51,7 +51,7 @@ namespace API.Controllers
         }
 
 
-         [HttpPost]
+        [HttpPost]
         public async Task<ActionResult<ProductsDto>> CreateProduct(CreateProductDto createProductDto)
         {
             var productDto = await _uow._productRepository.CreateProductAsync(createProductDto);

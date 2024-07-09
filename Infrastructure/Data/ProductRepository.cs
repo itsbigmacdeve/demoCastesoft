@@ -33,6 +33,7 @@ namespace Infrastructure.Data
             return await _context.Products.Include(p => p.Category).Include(p => p.Brand).Include(p => p.Photos).FirstOrDefaultAsync(p => p.Id == id);
         }
 
+
         public Task<IReadOnlyList<ProductCategory>> GetProductCategoriesAsync()
         {
             throw new NotImplementedException();
@@ -50,13 +51,16 @@ namespace Infrastructure.Data
 
         public async Task<ProductsDto> CreateProductAsync(CreateProductDto createProductDto)
         {
+            //Obtenro el producto a partir del Dto, ya como Products
             var product = _mapper.Map<CreateProductDto, Products>(createProductDto);
 
             _context.Products.Add(product);
 
+            //Se agrega el producto a la base de datos
             await _context.SaveChangesAsync();
 
-            // transform to ProductsDto
+            //Se obtiene el producto de la base de datos
+            product = GetProductByIdAsync(product.Id).Result;
 
             var productDto = _mapper.Map<Products, ProductsDto>(product);
 

@@ -22,5 +22,6 @@ namespace Core.Interfaces
 
         Task<ProductsDto>CreateProductAsync(CreateProductDto createProductDto);
 
+
     }
 }

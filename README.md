@@ -30,4 +30,12 @@
 
 1. Creamos 2 DTOs en Core
 2. Creamos los perfiles de mapeo
-3. Establecimos que iba a regresar cada uno en el repository y en la implementación
+3. Para poder retornar completo todo, seguimos metodo en Product Repository de Create ProductAsync
+- Se obtuvo el producto ya transformado , es decir mapeado
+- Se Agrego por completo
+- Despues se recupero el id del ultimo
+- Ese id sirve para buscar otra vez el prodcuto pero ya mapeado con el metodo anterior
+- Se devuelve el Dto
+4. Establecimos que iba a regresar cada uno en el repository y en la implementación
+- En el controlador solo se manda a llamar el metodo dentro
+
