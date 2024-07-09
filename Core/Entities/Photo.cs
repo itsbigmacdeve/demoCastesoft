@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Core.Entities
 {
     public class Photo :BaseEntity
@@ -10,6 +5,8 @@ namespace Core.Entities
         public string Url { get; set; }
 
         public bool IsMain { get; set; }
-        
+    
+        // Se agrega para poder relacionar la foto con el producto
+        public int ProductId { get; set; }
     }
 }
