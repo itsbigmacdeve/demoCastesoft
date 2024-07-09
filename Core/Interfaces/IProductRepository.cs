@@ -1,4 +1,7 @@
+
+using Core.Dtos;
 using Core.Entities;
+
 
 
 namespace Core.Interfaces
@@ -16,6 +19,8 @@ namespace Core.Interfaces
         Task<IReadOnlyList<ProductBrand>>GetProductBrandsAsync();
 
         Task<IReadOnlyList<ProductCategory>>GetProductCategoriesAsync();
+
+        Task<Products>CreateProductAsync(CreateProductDto productDto);
 
     }
 }

@@ -37,5 +37,19 @@ namespace API.Controllers
             
             return Ok(productDto);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProduct(int id)
+        {
+            var product = await _uow._productRepository.GetProductByIdAsync(id);
+
+            if (product == null) return NotFound();
+            _uow._productRepository.DeleteProduct(product);
+            if(await _uow.Complete()) return Ok();
+            
+            return BadRequest("Problem deleting the product");
+        }
+
+        
     }
 }

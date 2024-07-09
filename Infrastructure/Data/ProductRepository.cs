@@ -2,13 +2,14 @@ using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Core.Dtos;
 
 namespace Infrastructure.Data
 {
     public class ProductRepository : IProductRepository
     {
         private readonly CatalogDbContext _context;
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper; 
 
         public ProductRepository(CatalogDbContext context, IMapper mapper)
         {
@@ -45,6 +46,17 @@ namespace Infrastructure.Data
         public Task<Products> UpdateProductAsync(Products product)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Products> CreateProductAsync(CreateProductDto productDto)
+        {
+            var product = _mapper.Map<CreateProductDto, Products>(productDto);
+
+            _context.Products.Add(product);
+
+            await _context.SaveChangesAsync();
+
+            return product;
         }
     }
 }

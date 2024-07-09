@@ -16,6 +16,7 @@
 - [ ] Ejecutar el seeding
 - [ ] Dentro del `Program.cs` registrar el UnitOfWork y declarar el uso del automapper
 - [ ] Configurar los profiles del automapper
+- [ ] Probar los metodos de tu controlador
 - [ ] Terminar métodos en controller/repositories de productos
 
 
