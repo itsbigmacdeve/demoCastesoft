@@ -14,6 +14,7 @@
 - [ ] Modificamos hasta casi el final del Program cs, para poder agregar la configuracion que lo que nos permita ,es que cada que se ejecute el `Dotnet watch --no-hot-reload` se ejecuten los cambios en la migracion
 - [ ] Crear archivos de Seeding
 - [ ] Ejecutar el seeding
+- [ ] Dentro del `Program.cs` registrar el UnitOfWork y declarar el uso del automapper
 - [ ] Configurar los profiles del automapper
 - [ ] Terminar métodos en controller/repositories de productos
 
