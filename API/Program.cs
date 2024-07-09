@@ -40,7 +40,7 @@ try
 {
     await context.Database.MigrateAsync();
     //await identityContext.Database.MigrateAsync();
-    //await StoreContextSeed.SeedAsync(context);
+    await CatalogContextSeed.SeedAsync(context);
     //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
 }
 catch (Exception ex)

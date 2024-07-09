@@ -1,0 +1,43 @@
+[
+    {
+      "Id": 1,
+      "Name": "Electronics"
+    },
+    {
+      "Id": 2,
+      "Name": "Clothing"
+    },
+    {
+      "Id": 3,
+      "Name": "Books"
+    },
+    {
+      "Id": 4,
+      "Name": "Shoes"
+    },
+    {
+      "Id": 5,
+      "Name": "Accessories"
+    },
+    {
+      "Id": 6,
+      "Name": "Home"
+    },
+    {
+      "Id": 7,
+      "Name": "Beauty"
+    },
+    {
+      "Id": 8,
+      "Name": "Toys"
+    },
+    {
+      "Id": 9,
+      "Name": "Sports"
+    },
+    {
+      "Id": 10,
+      "Name": "Food"
+    }
+  ]
+  

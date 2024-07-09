@@ -1,0 +1,156 @@
+[
+    {
+      "Id": 1,
+      "Name": "Dell XPS 13",
+      "Description": "A high-performance laptop from Dell.",
+      "Price": "1200.00",
+      "Discount": "0.10",
+      "ProductCategoryId": 1,
+      "ProductBrandId": 1,
+      "Photos": [
+        {
+          "Id": 1,
+          "Url": "https://example.com/photos/dell-xps13.jpg",
+          "IsMain": true,
+          "ProductId": 1
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Dior T-shirt",
+      "Description": "A comfortable cotton t-shirt from Dior.",
+      "Price": "200.00",
+      "Discount": "0.15",
+      "ProductCategoryId": 2,
+      "ProductBrandId": 2,
+      "Photos": [
+        {
+          "Id": 2,
+          "Url": "https://example.com/photos/dior-tshirt.jpg",
+          "IsMain": true,
+          "ProductId": 2
+        }
+      ]
+    },
+    {
+      "Id": 3,
+      "Name": "Samsung Galaxy S21",
+      "Description": "A latest model smartphone from Samsung.",
+      "Price": "999.99",
+      "Discount": "0.05",
+      "ProductCategoryId": 1,
+      "ProductBrandId": 3,
+      "Photos": [
+        {
+          "Id": 3,
+          "Url": "https://example.com/photos/samsung-galaxy-s21.jpg",
+          "IsMain": true,
+          "ProductId": 3
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Name": "Apple MacBook Pro",
+      "Description": "A powerful laptop from Apple.",
+      "Price": "2400.00",
+      "Discount": "0.07",
+      "ProductCategoryId": 1,
+      "ProductBrandId": 4,
+      "Photos": [
+        {
+          "Id": 4,
+          "Url": "https://example.com/photos/apple-macbook-pro.jpg",
+          "IsMain": true,
+          "ProductId": 4
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Name": "Nike Air Max",
+      "Description": "Comfortable running shoes from Nike.",
+      "Price": "150.00",
+      "Discount": "0.10",
+      "ProductCategoryId": 4,
+      "ProductBrandId": 5,
+      "Photos": [
+        {
+          "Id": 5,
+          "Url": "https://example.com/photos/nike-air-max.jpg",
+          "IsMain": true,
+          "ProductId": 5
+        }
+      ]
+    },
+    {
+      "Id": 6,
+      "Name": "Adidas Ultraboost",
+      "Description": "High-performance running shoes from Adidas.",
+      "Price": "180.00",
+      "Discount": "0.12",
+      "ProductCategoryId": 4,
+      "ProductBrandId": 6,
+      "Photos": [
+        {
+          "Id": 6,
+          "Url": "https://example.com/photos/adidas-ultraboost.jpg",
+          "IsMain": true,
+          "ProductId": 6
+        }
+      ]
+    },
+    {
+      "Id": 7,
+      "Name": "Sony WH-1000XM4",
+      "Description": "Noise-cancelling headphones from Sony.",
+      "Price": "350.00",
+      "Discount": "0.08",
+      "ProductCategoryId": 1,
+      "ProductBrandId": 8,
+      "Photos": [
+        {
+          "Id": 7,
+          "Url": "https://example.com/photos/sony-wh-1000xm4.jpg",
+          "IsMain": true,
+          "ProductId": 7
+        }
+      ]
+    },
+    {
+      "Id": 8,
+      "Name": "Microsoft Surface Pro 7",
+      "Description": "A versatile laptop from Microsoft.",
+      "Price": "900.00",
+      "Discount": "0.10",
+      "ProductCategoryId": 1,
+      "ProductBrandId": 9,
+      "Photos": [
+        {
+          "Id": 8,
+          "Url": "https://example.com/photos/microsoft-surface-pro-7.jpg",
+          "IsMain": true,
+          "ProductId": 8
+        }
+      ]
+    },
+    {
+      "Id": 9,
+      "Name": "LG OLED TV",
+      "Description": "A stunning 4K OLED TV from LG.",
+      "Price": "2000.00",
+      "Discount": "0.15",
+      "ProductCategoryId": 1,
+      "ProductBrandId": 10,
+      "Photos": [
+        {
+          "Id": 9,
+          "Url": "https://example.com/photos/lg-oled-tv.jpg",
+          "IsMain": true,
+          "ProductId": 9
+        }
+      ]
+    }
+  ]
+  
