@@ -116,7 +116,7 @@ namespace Infrastructure.Data
             return await PagedList<ProductsDto>.CreateAsync(query, productParams.PageNumber, productParams.PageSize);
         } */
 
-        //Este es con la paginacion y el filtrado tener cuidado cuando este un all
+        //Este es con la paginacion , el filtrado, ordenamiento y buqueda tener cuidado cuando este un all
         public async Task<PagedList<ProductsDto>> GetPagedProductsAsync(ProductParams productParams)
         {
             var query = _context.Products.AsQueryable();
