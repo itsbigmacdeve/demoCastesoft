@@ -126,6 +126,7 @@ namespace API.Controllers
         [HttpGet("pagedProducts")]
         public async Task<PagedList<ProductsDto>> GetPagedProducts([FromQuery]ProductParams productsParams)
         {
+
             var products = await _uow._productRepository.GetPagedProductsAsync(productsParams);
 
             Response.AddPaginationHeader(new PaginationHeader(products.CurrentPage, products.PageSize, products.TotalCount, products.TotalPages));

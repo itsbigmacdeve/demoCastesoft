@@ -45,7 +45,7 @@
 - [x] Crear metodo de edicion de producto
 - [x] Checar que cuando se cree un producto no tenga el mismo nombre
 - [x] Checar que cuando se cree un producto no tenga descuento mayor a 1 y menor que 0
-- [ ] Repasar e implementar la paginación
+- [x] Repasar e implementar la paginación
 - [ ] Implementar metodo de filtrado junto con la paginación
 
 # Para la paginación (se cambio todo a core)
@@ -54,7 +54,17 @@
 - Se creo una carpeta llamada Extension en API
 - Se creo un archivo llamado HttpExtensions.cs dentro de la carpeta extensions , aquie cambie por append, por si no funciona regresarme y cambiarlo como estaba
 - Se creo un archivo llamado ProductParams dentro de la carpeta de Helpers
-- Se creo un archivo 
+- Se creo el metodo en las interfaz del producto para devolver los productos paginados  y se implemento en el respositorio
+- Se creo un metodo en el controlador, de igual manera para traerme los articulos paginados.
+
+# Para el filtering
+- Se modifico el ProductParams, se agregaron los parametros por los cuales se filtraran, en este caso por "brand" o "category"
+- Se modifico el ProductRepository , para aplicar los filtros de busqueda dentro de los if, las querys son los que ordenan y lo que estaba antes dentro del parametro del mapping , ahora esta en el return
+
+# Para el ordering
+- Se modificara el ProductsParams, se agregara parametro por el cual se ordenara, pero si aplicaremos un switch , se declara nadamas.
+- En el repositorio se declara el switch
+
 
 # Notas pendientes de metodos creados el 10 de Julio
 - [ ] Modificar el metodo de update, para que automaticamente la actualizacion de productos.

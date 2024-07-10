@@ -105,13 +105,50 @@ namespace Infrastructure.Data
 
         //Metodos con paginacion//
 
-        public async Task<PagedList<ProductsDto>> GetPagedProductsAsync(ProductParams productParams)
+
+        //Este era con la pura paginacion
+        /* public async Task<PagedList<ProductsDto>> GetPagedProductsAsync(ProductParams productParams)
         {
             var query = _context.Products
                 .ProjectTo<ProductsDto>(_mapper.ConfigurationProvider)
                 .AsNoTracking();
 
             return await PagedList<ProductsDto>.CreateAsync(query, productParams.PageNumber, productParams.PageSize);
+        } */
+
+        //Este es con la paginacion y el filtrado tener cuidado cuando este un all
+        public async Task<PagedList<ProductsDto>> GetPagedProductsAsync(ProductParams productParams)
+        {
+            var query = _context.Products.AsQueryable();
+
+            //Aqui se podria agregar el filtrado
+            if(!string.IsNullOrEmpty(productParams.Brand))
+            {
+                query = query.Where(p => p.Brand.Name == productParams.Brand);
+            }
+            
+            if(!string.IsNullOrEmpty(productParams.Category))
+            {
+                query = query.Where(p => p.Category.Name == productParams.Category);
+            }
+
+            //Aqui se podria agregar el ordenamiento
+
+            switch (productParams.orderBy)
+            {
+                case "priceAsc":
+                    query = query.OrderBy(p => p.Price);
+                    break;
+                case "priceDesc":
+                    query = query.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    query = query.OrderBy(p => p.Name);
+                    break;
+            }
+            
+
+            return await PagedList<ProductsDto>.CreateAsync(query.AsNoTracking().ProjectTo<ProductsDto>(_mapper.ConfigurationProvider), productParams.PageNumber, productParams.PageSize);
         }
 
     }

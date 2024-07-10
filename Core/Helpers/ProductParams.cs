@@ -13,5 +13,18 @@ namespace Core.Helpers
             get => pageSize;
             set => pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         }
+
+        //Para el filtrado
+
+        public string Brand { get; set; }
+
+        public string Category { get; set; }
+
+        //Para el ordenamiento
+
+        public string orderBy { get; set; }
+
+
+        
     }
 }
