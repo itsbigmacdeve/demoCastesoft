@@ -24,6 +24,10 @@ namespace Core.Helpers
 
         public string orderBy { get; set; }
 
+        //Para la busqueda
+
+        public string Search { get; set; }
+
 
         
     }

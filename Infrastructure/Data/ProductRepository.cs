@@ -146,6 +146,13 @@ namespace Infrastructure.Data
                     query = query.OrderBy(p => p.Name);
                     break;
             }
+
+            //Aqui se podria agregar la busqueda
+
+            if(!string.IsNullOrEmpty(productParams.Search))
+            {
+                query = query.Where(p => p.Name.Contains(productParams.Search) || p.Description.Contains(productParams.Search));
+            }
             
 
             return await PagedList<ProductsDto>.CreateAsync(query.AsNoTracking().ProjectTo<ProductsDto>(_mapper.ConfigurationProvider), productParams.PageNumber, productParams.PageSize);
