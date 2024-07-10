@@ -28,6 +28,17 @@ namespace Infrastructure.Data
             return await _context.ProductBrands.ToListAsync();
         }
 
+        public async Task<ProductBrand> GetProductBrandByIdAsync(int id)
+        {
+            return await _context.ProductBrands.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public async Task<ProductBrand> GetProductBrandByNameAsync(string name)
+        {
+            return await _context.ProductBrands.FirstOrDefaultAsync(p => p.Name == name);
+        }
+
+
         public async Task<Products> GetProductByIdAsync(int id)
         {
             return await _context.Products.Include(p => p.Category).Include(p => p.Brand).Include(p => p.Photos).FirstOrDefaultAsync(p => p.Id == id);
@@ -39,14 +50,27 @@ namespace Infrastructure.Data
             return await _context.ProductCategories.ToListAsync();
         }
 
+        public async Task<ProductCategory> GetProductCategoryByIdAsync(int id)
+        {
+            return await _context.ProductCategories.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public async Task<ProductCategory> GetProductCategoryByNameAsync(string name)
+        {
+            return await _context.ProductCategories.FirstOrDefaultAsync(p => p.Name == name);
+        }
+
         public async Task<IReadOnlyList<Products>> GetProductsAsync()
         {
             return await _context.Products.Include(p => p.Category).Include(p => p.Brand).Include(p=> p.Photos).ToListAsync();
         }
 
-        public Task<Products> UpdateProductAsync(Products product)
+        public async Task<Products> UpdateProductAsync(Products product) // Modifica todo menos las fotos
         {
-            throw new NotImplementedException();
+            _context.Entry(product).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return product;
+
         }
 
         public async Task<ProductsDto> CreateProductAsync(CreateProductDto createProductDto)
@@ -66,5 +90,16 @@ namespace Infrastructure.Data
 
             return productDto;
         }
+
+        public Task<Products> UpdateProductPhotosAsync(Products product) // Aqui se podria modificar las fotos
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> ProductExistsByNameAsync(string name)
+        {
+            return await _context.Products.AnyAsync(p => p.Name == name); 
+        }
+
     }
 }

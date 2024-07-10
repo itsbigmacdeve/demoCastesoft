@@ -1,23 +1,25 @@
-# Pasos a seguir para crearlo desde 0, con algunos faltantes
+# Pasos a seguir para crearlo desde 0 con algunos faltantes 
+# Bitacora del 9 de Julio 2024
 
-- [ ] Crear conexión con la BD, desde el program.cs
-- [ ] Añadir cadena de conexión a la db, en el appsettingsdevelopment.json
-- [ ] Instalar Certificados https
-- [ ] Instalar herramienta de migraciones `dotnet tool install --global dotnet-ef --version 8.0.6`
-- [ ] Crear carpeta de Migrations y Seed Data
-- [ ] Se verifico que todas las entidades estuvieran bien establecidas, tanto las que se usaran como propias, como las que se usaran como foráneas
+- [x] Crear conexión con la BD, desde el program.cs
+- [x] Añadir cadena de conexión a la db, en el appsettingsdevelopment.json
+- [x] Instalar Certificados https
+- [x] Instalar herramienta de migraciones `dotnet tool install --global dotnet-ef --version 8.0.6`
+- [x] Crear carpeta de Migrations y Seed Data
+- [x] Se verifico que todas las entidades estuvieran bien establecidas, tanto las que se usaran como propias, como las que se usaran como foráneas
   - Las que son de 1 a 1, se les agrega la foránea ahí mismo como en products que se le pone el del brand y category
   - Las que son de 1 a muchos, se le agrega la foránea en este caso a la que es de muchos, por ejemplo, en la photo se le pone a la photo la foránea que hará referencia al producto, entonces a la photo se le pone productId
-- [ ] Crear carpeta de Config, dentro de data para configurar cómo queremos que se comporte nuestra entidad en la bd, esto se puede observar dentro de `ProductConfiguration`
-- [ ] Se modificó el db context, se agregó la configuración abajo, esta viene para pasarle la configuración que hicimos en el paso anterior
-- [ ] Crear la migración con `dotnet ef migrations add InitialCreate -p Infrastructure -s API -o Data/Migrations`
-- [ ] Modificamos hasta casi el final del Program cs, para poder agregar la configuracion que lo que nos permita ,es que cada que se ejecute el `Dotnet watch --no-hot-reload` se ejecuten los cambios en la migracion
-- [ ] Crear archivos de Seeding
-- [ ] Ejecutar el seeding
-- [ ] Dentro del `Program.cs` registrar el UnitOfWork y declarar el uso del automapper
-- [ ] Configurar los profiles del automapper
-- [ ] Probar los metodos de tu controlador
-- [ ] Terminar métodos en controller/repositories de productos
+- [x] Crear carpeta de Config, dentro de data para configurar cómo queremos que se comporte nuestra entidad en la bd, esto se puede observar dentro de `ProductConfiguration`
+- [x] Se modificó el db context, se agregó la configuración abajo, esta viene para pasarle la configuración que hicimos en el paso anterior
+- [x] Crear la migración con `dotnet ef migrations add InitialCreate -p Infrastructure -s API -o Data/Migrations`
+- [x] Modificamos hasta casi el final del Program cs, para poder agregar la configuracion que lo que nos permita ,es que cada que se ejecute el `Dotnet watch --no-hot-reload` se ejecuten los cambios en la migracion
+- [x] Crear archivos de Seeding
+- [x] Ejecutar el seeding
+- [x] Dentro del `Program.cs` registrar el UnitOfWork y declarar el uso del automapper
+- [x] Se configuro los perfiles de mapeo para ciertas entidades y Dtos
+- [x] Probar los metodos de tu controlador
+- [x] Terminar métodos de crear en controller/repositories de productos
+
 
 
 # Comandos Importantes
@@ -39,7 +41,22 @@
 4. Establecimos que iba a regresar cada uno en el repository y en la implementación
 - En el controlador solo se manda a llamar el metodo dentro
 
-# Por hacer mañana 
-- [] Crear metodo de edicion de producto
-- [] Checar que cuando se cree un producto no tenga el mismo nombre
-- [] 
+# Por hacer hoy 10 de Julio
+- [x] Crear metodo de edicion de producto
+- [x] Checar que cuando se cree un producto no tenga el mismo nombre
+- [x] Checar que cuando se cree un producto no tenga descuento mayor a 1 y menor que 0
+- [ ] Repasar e implementar la paginación
+- [ ] Implementar metodo de filtrado junto con la paginación
+
+# Notas pendientes de metodos creados el 10 de Julio
+- [ ] Modificar el metodo de update, para que automaticamente la actualizacion de productos.
+- [ ] Crear metodo para poder actualizar las fotos.
+- Se dejaron instrucciones de como podria ser en el metodo update mencionado anteriormente
+
+# Por hacer días siguientes
+- [ ] Implementar el front
+- [ ] Crear cascaron pantalla de vista de productos
+- [ ] Crear servicios para obtener productos
+- [ ] Crear servicios para poder obtener los productos paginados
+- [ ] Crear servicios para poder utilizar los filtros
+

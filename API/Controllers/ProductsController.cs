@@ -54,6 +54,12 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductsDto>> CreateProduct(CreateProductDto createProductDto)
         {
+            var productExists = await _uow._productRepository.ProductExistsByNameAsync(createProductDto.Name);
+
+            if (productExists) return BadRequest("Product already exists");
+
+            if (createProductDto.Discount > 1 || createProductDto.Discount < 0) return BadRequest("Discount must be between 0 and 1");
+
             var productDto = await _uow._productRepository.CreateProductAsync(createProductDto);
 
             if (productDto == null) return BadRequest("Problem creating product");
@@ -76,6 +82,43 @@ namespace API.Controllers
 
             return Ok(productCategories);
         }
+        
+
+        [HttpPut("update")]
+        public async Task<ActionResult<ProductsDto>> UpdateProduct([FromBody]ProductsDto productDto)
+        {
+            var product = await _uow._productRepository.GetProductByIdAsync(productDto.Id);
+
+            if (product == null) return NotFound();
+
+
+            //Obtengo el id de la marca y la categoria
+            var brandId = await _uow._productRepository.GetProductBrandByNameAsync(productDto.Brand);
+
+            var categoryId = await _uow._productRepository.GetProductCategoryByNameAsync(productDto.Category);
+
+            //Asigno los valores a las propiedades de la entidad
+            product.ProductBrandId = brandId.Id;
+            product.ProductCategoryId = categoryId.Id;
+
+            
+            // Mapear manualmente las propiedades restantes
+            product.Name = productDto.Name;
+            product.Description = productDto.Description;
+            product.Price = productDto.Price;
+            product.Discount = productDto.Discount;
+
+            //Falta que se mapea automatico todo, ademas de para modificar la foto podriamos hacer un metodo para el front, que me traiga la lista de fotos y que cuando se quiera modificar se envie el id, de la foto y que lo que se mapee
+            //sea el id recibido, pero buscando el id de la foto y que una vez conseguida la info de la foto se obtenga el url de esa foto y se le asigne a la entidad de producto
+
+            var updatedProduct = await _uow._productRepository.UpdateProductAsync(product);
+
+            var updatedProductDto = _mapper.Map<Products, ProductsDto>(updatedProduct);
+
+            return Ok(updatedProductDto);
+        }
+
+        //Falta implementar el metodo para modificar las fotos
 
         
     }
