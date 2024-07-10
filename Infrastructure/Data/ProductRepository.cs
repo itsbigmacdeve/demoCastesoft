@@ -3,6 +3,8 @@ using Core.Entities;
 using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Core.CoreDtos;
+using Core.Helpers;
+using AutoMapper.QueryableExtensions;
 
 namespace Infrastructure.Data
 {
@@ -99,6 +101,17 @@ namespace Infrastructure.Data
         public async Task<bool> ProductExistsByNameAsync(string name)
         {
             return await _context.Products.AnyAsync(p => p.Name == name); 
+        }
+
+        //Metodos con paginacion//
+
+        public async Task<PagedList<ProductsDto>> GetPagedProductsAsync(ProductParams productParams)
+        {
+            var query = _context.Products
+                .ProjectTo<ProductsDto>(_mapper.ConfigurationProvider)
+                .AsNoTracking();
+
+            return await PagedList<ProductsDto>.CreateAsync(query, productParams.PageNumber, productParams.PageSize);
         }
 
     }

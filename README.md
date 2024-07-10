@@ -48,6 +48,14 @@
 - [ ] Repasar e implementar la paginación
 - [ ] Implementar metodo de filtrado junto con la paginación
 
+# Para la paginación (se cambio todo a core)
+- Se creo en helpers un PagedList.cs
+- Se creo en helpers un PaginationHeader.cs
+- Se creo una carpeta llamada Extension en API
+- Se creo un archivo llamado HttpExtensions.cs dentro de la carpeta extensions , aquie cambie por append, por si no funciona regresarme y cambiarlo como estaba
+- Se creo un archivo llamado ProductParams dentro de la carpeta de Helpers
+- Se creo un archivo 
+
 # Notas pendientes de metodos creados el 10 de Julio
 - [ ] Modificar el metodo de update, para que automaticamente la actualizacion de productos.
 - [ ] Crear metodo para poder actualizar las fotos.

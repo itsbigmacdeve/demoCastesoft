@@ -1,6 +1,7 @@
 
 using Core.CoreDtos;
 using Core.Entities;
+using Core.Helpers;
 
 
 
@@ -35,6 +36,10 @@ namespace Core.Interfaces
         Task<ProductsDto>CreateProductAsync(CreateProductDto createProductDto);
 
         Task<bool> ProductExistsByNameAsync(string name);
+
+        //Metodos con paginacion//
+
+        Task<PagedList<ProductsDto>>GetPagedProductsAsync(ProductParams productParams);
 
 
     }

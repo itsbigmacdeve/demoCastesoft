@@ -3,6 +3,9 @@ using Core.CoreDtos;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Core.Helpers;
+using Core.Extensions;
+
 
 namespace API.Controllers
 {
@@ -120,6 +123,14 @@ namespace API.Controllers
 
         //Falta implementar el metodo para modificar las fotos
 
-        
+        [HttpGet("pagedProducts")]
+        public async Task<PagedList<ProductsDto>> GetPagedProducts([FromQuery]ProductParams productsParams)
+        {
+            var products = await _uow._productRepository.GetPagedProductsAsync(productsParams);
+
+            Response.AddPaginationHeader(new PaginationHeader(products.CurrentPage, products.PageSize, products.TotalCount, products.TotalPages));
+
+            return products;
+        }
     }
 }
